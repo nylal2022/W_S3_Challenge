@@ -2,428 +2,349 @@
 <html lang="en">
 
 <head>
-  <title>Web Sprint 3 Challenge</title>
-  <style>
-    * {
-      font-family: 'Times New Roman', Times, serif
-    }
-
-    .widget {
-      padding: 0 0 0.5rem 0.65rem;
-      margin-bottom: 0.5rem;
-      border: 1px solid black;
-      border-radius: 0.5rem;
-    }
-
-    .widget p {
-      font-style: italic;
-    }
-
-  </style>
+  <title>Advanced Objects</title>
 </head>
 
 <body>
-  <h1>Web Sprint 3 Challenge </h1>
-  <p>❗ See the last script tag for instructions on completing your Challenge</p>
-  <!-- widgets start, do not modify -->
-  <section class="widget">
-    <p>This widget uses the EBook class</p>
-    <textarea placeholder="Write your book"></textarea><br />
-    <input type="number" placeholder="Characters per page" /><br /><br />
-    <button id="turnPage">Turn Page</button>
-    <p id="bookPage"></p>
-  </section>
-  <!-- widgets end -->
+  <h1>Advanced Objects</h1>
+  <p>Please load this file in VSCode and Chrome, and open the Console in Chrome Dev Tools.</p>
+  <p>Work through the challenges found inside the script tag in this document,
+    until the Console reports all tests passing.</p>
 
-  <!-- The first script tag loads a library called lodash that helps with testing -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-  <script id="challenge">
-    // In CHALLENGES 1-4 you will write JavaScript classes
+  <script>
+    // In CHALLENGES 1-4 you will flesh out some classes.
 
-    // ❗ Do not rename the classes provided
-    // ❗ Do not alter the position of the script tags
-    // ❗ Debug properly using the Console
+    // To do this, translate each 🧠 set of instructions into a working class.
+    // ❗ Classes are scaffolded for you.
+    // ❗ Watch the Guided Project to learn proper debugging technique.
 
-    // 👉 CHALLENGE 1 - Integers
-    class Integers {
-      // 🧠 Constructor takes **any** number of arguments, which are integers
-      // 🧠 Instances have an `ints` property which is an array holding the integers above in the same order
-      // 🧠 Implement a `getAll` method which returns the data held in the `ints` property
-      // 🧠 Implement a `getEvens` method which returns an array with the integers that are even
-      // 🧠 Implement a `getNegatives` method which returns an array with the integers that negative
-      // 🧠 Implement a `getAllSquared` method which returns an array with the integers squared
-      // 🧠 Implement a `pop` method which removes the last integer from `ints`  and returns it
-      // 🧠 Implement a `push` method which takes an int and pushes it to the end of `ints`, and returns the updated `ints` property
-      // 🧠 Implement a `getEveryNth` method which takes an int `n` and returns an array with the ints at position 0, n, n + n, n + n + n, etc
-      // 🧠 Implement a `getAllReversed` method which returns the ints in reverse order
-      // ❗ WARNING: except for `getAllReversed`, methods must respect the order of the integers
-      // ❗ WARNING: note that except for push and pop, the methods don't change the `ints` property
-// hello github
+    // 👉 CHALLENGE 1
+    class PeterPan {
+    constructor(name) {
+        this.name = name;
+        this.age = 0;
     }
 
-    // 👉 CHALLENGE 2 NerfGun
-    class NerfGun {
-      // 🧠 Constructor takes one argument: the total number of projectiles supported by the instance
-      // 🧠 New instances initialize fully loaded and with the safety on
-      // 🧠 Instances have a `shoot` method that takes no arguments:
-      //      * If there is ammo left and safety is off, method consumes one projectile and returns the string "Bang!"
-      //      * Shooting on empty or with the safety on, returns the string "Click!"
-      // 🧠 Instances have a `reload` method that takes a number and tops up the instance by that number
-      //      * Reloading returns a string in the following format: "<number> projectiles left!"
-      //      * Reloading by more than capacity fills the instance to capacity
-      //      * Passing an argument which is not a number larger than zero returns the string "Error reloading!"
-      // 🧠 Instances have a `toggleSafety` method that takes no arguments and switches the state of the safety
-      //      * When engaging the safety, return "Safety enabled!"
-      //      * When disengaging the safety, return "Safety disabled!"
-      // 🌟 HINT: instances need to keep track of their maximum capacity as well as their current capacity
+    ageGracefully() {
+        if (this.age < 12) {
+            this.age += 1;
+        }
+    }
+}
 
+    // 👉 CHALLENGE 2
+    class AirPlane {
+    constructor(model) {
+        this.model = model;
+        this.altitude = 0;
     }
 
-    // 👉 CHALLENGE 3 EBook
-    class EBook {
-      // 🧠 Constructor takes two arguments:
-      //      * First arg is a string with the whole text of the book
-      //      * Second arg is the number of characters contained in a single page of the book
-      // 🧠 Instances have a `next` method:
-      //      * It takes no args and returns the next page of the book
-      //      * If the next page is empty because we have reached the end, return null instead
-      // 🧠 Example of usage:
-      //    const ebook = new EBook('abcdefg', 3)
-      //    ebook.next() // returns "abc"
-      //    ebook.next() // returns "def"
-      //    ebook.next() // returns "g"
-      //    ebook.next() // returns null
-      // 🌟 HINT: remember about the `slice` method which strings and arrays have
-      // ❗ Feel free to implement `back`, although this is not required nor graded
-
+    up(meters) {
+        this.altitude += meters;
+        return this.altitude;
     }
 
-    // 👉 CHALLENGE 4 AntFarm
-    class AntFarm {
-      // 🧠 Constructor takes **any** number of arguments, which are strings: the names of your ants
-      // 🧠 Instances of AntFarm have an `ants` property holding an array of ants:
-      //      * Each ant is an object with a `name` prop and a `health` prop that starts at 100
-      // 🧠 Instances of AntFarm have a `work` method:
-      //      * When invoked your ants do chores at a cost of 20 health points each
-      //      * The method takes no arguments and returns the string "<ant number> ants starting work!"
-      //      * If the `health` of any ant decreases to zero or below, it dies and is removed from `ants`
-      //      * If `ants` contains no ants, the method returns "No ants here. Did you work them to death?"
-      // 🧠 Instances of AntFarm have a `feed` method:
-      //      * The method takes as its only argument the name of the particular ant(s) to feed
-      //      * When invoked, the ant(s) by the given name obtain a health increase of 15 points
-      //      * The method returns the string "Yum!" if any ants by the given name exist
-      //      * The method returns the string "<ant name> not found!" if no ants by the given name exist
-      // 🌟 Example:
-      //      const farm = new AntFarm('Jess', 'Blake');
-      //      farm.ants;         // evaluates to [{name: 'Jess', health: 100}, {name: 'Blake', health: 100}]
-      //      farm.work();       // returns "2 ants starting work!"
-      //      farm.ants;         // evaluates to [{name: 'Jess', health: 80}, {name: 'Blake', health: 80}]
-      //      farm.feed('Jess'); // returns "Yum!"
-      //      farm.ants;         // evaluates to [{name: 'Jess', health: 95}, {name: 'Blake', health: 80}]
-      // 👉 HINT: when replacing a list with a modified list of the same length you can use map:
-      //      let list = ['a','b','c']
-      //      list = list.map(item => (item === "a" ? item + item : item))
-      //      console.log(list) // prints ["aa","b","c"]
-      // 👉 HINT: when replacing a list with a filtered list you can use filter:
-      //      let list = ['a','b','c']
-      //      list = list.filter(item => item === "a")
-      //      console.log(list) // prints ["a"]
-      // 👉 HINT: if you are not feeling confident with map and filter, solve the problem with for loops,
-      //      and with the piece of mind of all tests passing, refactor to use map/filter
+    down(meters) {
+        if (this.altitude - meters < 0) {
+            this.altitude = 0;
+            return "CRASH!";
+        } else {
+            this.altitude -= meters;
+            return this.altitude;
+        }
+    }
+}
 
+
+    // 👉 CHALLENGE 3
+    class Bulb {
+    constructor() {
+        this.isOn = false; // Initial value of isOn is false
     }
 
-    // 🧪 TESTS, do not make any changes below this line ===================
-    // 🧪 TESTS, do not make any changes below this line ===================
-    // 🧪 TESTS, do not make any changes below this line ===================
-    globalThis.challengeVersion = 1
-    globalThis.Integers = Integers
-    globalThis.NerfGun = NerfGun
-    globalThis.EBook = EBook
-    globalThis.AntFarm = AntFarm
+    turnOn() {
+        this.isOn = true;
+        return "You turned the bulb ON";
+    }
 
-    try {
-      testClass('CHALLENGE 1 - class Integers', [
+    turnOff() {
+        this.isOn = false;
+        return "You turned the bulb OFF";
+    }
+
+    toggle() {
+        this.isOn = !this.isOn;
+        return this.isOn ? "You turned the bulb ON" : "You turned the bulb OFF";
+    }
+}
+
+
+    // 👉 CHALLENGE 4
+    class CountDown {
+    constructor(start) {
+        this.current = start; // Initialize the countdown starting number
+    }
+
+    count() {
+        if (this.current > 0) {
+            const result = `${this.current}!`; // Return the current number with "!"
+            this.current--; // Decrement the current count
+            return result;
+        } else if (this.current === 0) {
+            this.current--; // Prepare for the next call after liftoff
+            return "Liftoff!"; // Return "Liftoff!" when reaching zero
+        } else {
+            return null; // Return null after liftoff
+        }
+    }
+}
+   
+
+    // 🧪 TESTS, do not work below this line
+    // 🧪 TESTS, do not work below this line
+    // 🧪 TESTS, do not work below this line
+    {
+      runTest('CHALLENGE 1 - PeterPan', [
         function () {
-          let actual, description = 'getAll returns all the ints'
-          let expected = [1, 2, 3, 4]
+          let actual, description = 'The person ages normally until age 12'
+          let expected = { name: 'Joe', age: 12 }
           try {
-            const ints = new Integers(1, 2, 3, 4)
-            actual = ints.getAll()
+            actual = new PeterPan('Joe');
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].forEach(round => actual.ageGracefully())
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'getEvens returns the even ints'
-          let expected = [0, 2, 4]
+          let actual, description = 'The person does not age beyond 12 years old'
+          let expected = { name: 'Joe', age: 12 }
           try {
-            const ints = new Integers(0, 2, 3, 5, 4)
-            actual = ints.getEvens()
+            actual = new PeterPan('Joe');
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].forEach(round => actual.ageGracefully())
+          } catch (err) { actual = err.message }
+          return [description, expected, actual]
+        }
+      ])
+      runTest('CHALLENGE 2 - Airplane', [
+        function () {
+          let actual, description = 'New plane has model and altitude properties'
+          let expected = { model: 'Spitfire', altitude: 0 }
+          try {
+            actual = new AirPlane('Spitfire')
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'getNegatives returns the negative ints'
-          let expected = [-3, -5]
+          let actual, description = 'New plane has an up method that increases altitude'
+          let expected = { model: 'Spitfire', altitude: 10 }
           try {
-            const ints = new Integers(-3, 5, -5, 0)
-            actual = ints.getNegatives()
+            actual = new AirPlane('Spitfire')
+            actual.up(4)
+            actual.up(6)
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'getAllSquared returns the ints squared'
-          let expected = [4, 1, 0, 36, 25]
+          let actual, description = 'The up method returns the updated altitude'
+          let expected = 10
           try {
-            const ints = new Integers(2, 1, 0, 6, 5)
-            actual = ints.getAllSquared()
+            let plane = new AirPlane('Spitfire')
+            plane.up(4)
+            actual = plane.up(6)
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'pop removes the last int and returns it'
-          let expected = [3, [1, 2]]
+          let actual, description = 'New plane has a down method that decreases altitude'
+          let expected = 7
           try {
-            const ints = new Integers(1, 2, 3)
-            actual = []
-            actual.push(ints.pop())
-            actual.push(ints.ints)
+            let plane = new AirPlane('Spitfire')
+            plane.altitude = 10
+            plane.down(3)
+            actual = plane.altitude
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'push adds an integer into ints and returns the updated ints'
-          let expected = [[1, 2, 3, 4], [1, 2, 3, 4]]
+          let actual, description = 'The down method returns the updated altitude'
+          let expected = 8
           try {
-            const ints = new Integers(1, 2, 3)
-            actual = []
-            actual.push(ints.push(4))
-            actual.push(ints.ints)
+            let plane = new AirPlane('Spitfire')
+            plane.altitude = 11
+            actual = plane.down(3)
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'getEveryNth returns ints at every nth index'
-          let expected = [[1, 3, 5], [1, 4]]
+          let actual, description = 'A crashed plane has altitude 0'
+          let expected = 0
           try {
-            const ints = new Integers(1, 2, 3, 4, 5, 6)
-            actual = []
-            actual.push(ints.getEveryNth(2))
-            actual.push(ints.getEveryNth(3))
+            let plane = new AirPlane('Spitfire')
+            plane.altitude = 10
+            plane.down(11)
+            actual = plane.altitude
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'getAllReversed returns the ints in reverse order'
-          let expected = [[6, 5, 4, 3, 2, 1], [0, 1, 9, 3, 6, 9]]
+          let actual, description = 'The down method returns CRASH! if we crash the plane'
+          let expected = "CRASH!"
           try {
-            const ints = new Integers(1, 2, 3, 4, 5, 6)
-            const ints2 = new Integers(9, 6, 3, 9, 1, 0)
-            actual = []
-            actual.push(ints.getAllReversed())
-            actual.push(ints2.getAllReversed())
+            let plane = new AirPlane('Spitfire')
+            plane.altitude = 10
+            actual = plane.down(11)
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
       ])
-      testClass('CHALLENGE 2 - class NerfGun', [
+      runTest('CHALLENGE 3 - Bulb', [
         function () {
-          let actual, description = 'A new NerfGun has its safety on'
-          let expected = "Click!"
+          let actual, description = 'New bulbs have an isOn property with a value of false'
+          let expected = { isOn: false }
           try {
-            const nerf = new NerfGun(6)
-            actual = nerf.shoot()
+            actual = new Bulb()
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'A NerfGun can disable safety, shoot, re-enable safety'
-          let expected = ["Safety disabled!", "Bang!", "Safety enabled!", "Click!"]
+          let actual, description = 'A new bulb can be turned on'
+          let expected = { isOn: true }
           try {
-            const nerf = new NerfGun(6)
-            actual = []
-            actual.push(nerf.toggleSafety())
-            actual.push(nerf.shoot())
-            actual.push(nerf.toggleSafety())
-            actual.push(nerf.shoot())
+            actual = new Bulb()
+            actual.turnOn()
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'A NerfGun can not shoot after running out of projectiles'
-          let expected = ["Bang!", "Bang!", "Bang!", "Click!"]
+          let actual, description = 'Turning on a bulb returns the right string'
+          let expected = "You turned the bulb ON"
           try {
-            const nerf = new NerfGun(3)
-            nerf.toggleSafety()
-            actual = []
-            actual.push(nerf.shoot()); actual.push(nerf.shoot()); actual.push(nerf.shoot()); actual.push(nerf.shoot())
+            let bulb = new Bulb()
+            actual = bulb.turnOn()
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'A NerfGun can be reloaded to less than capacity'
-          let expected = ["2 projectiles left!", "Bang!", "Bang!", "Click!"]
+          let actual, description = 'A bulb that is on can be turned off'
+          let expected = { isOn: false }
           try {
-            const nerf = new NerfGun(3)
-            nerf.toggleSafety()
-            nerf.shoot()
-            nerf.shoot()
-            nerf.shoot()
-            actual = []
-            actual.push(nerf.reload(2))
-            actual.push(nerf.shoot()); actual.push(nerf.shoot()); actual.push(nerf.shoot())
+            actual = new Bulb()
+            actual.isOn = true
+            actual.turnOff()
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'Reloading to more than capacity only fills NerfGun to capacity'
-          let expected = ["3 projectiles left!", "Bang!", "Bang!", "Bang!", "Click!"]
+          let actual, description = 'Turning off a bulb returns the right string'
+          let expected = "You turned the bulb OFF"
           try {
-            const nerf = new NerfGun(3)
-            nerf.toggleSafety()
-            nerf.shoot()
-            actual = []
-            actual.push(nerf.reload(100))
-            actual.push(nerf.shoot()); actual.push(nerf.shoot())
-            actual.push(nerf.shoot()); actual.push(nerf.shoot())
+            let bulb = new Bulb()
+            bulb.isOn = true
+            actual = bulb.turnOff()
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'Reloading NerfGun incorrectly yields an error message'
-          let expected = ["Error reloading!", "Error reloading!", "Error reloading!"]
+          let actual, description = 'An off bulb can be toggled on'
+          let expected = { isOn: true }
           try {
-            const nerf = new NerfGun(6)
+            actual = new Bulb()
+            actual.toggle()
+          } catch (err) { actual = err.message }
+          return [description, expected, actual]
+        },
+        function () {
+          let actual, description = 'An on bulb can be toggled off'
+          let expected = { isOn: false }
+          try {
+            actual = new Bulb()
+            actual.isOn = true
+            actual.toggle()
+          } catch (err) { actual = err.message }
+          return [description, expected, actual]
+        },
+        function () {
+          let actual, description = 'Toggling multiple times works as expected'
+          let expected = [true, false, true]
+          try {
+            let bulb = new Bulb()
             actual = []
-            actual.push(nerf.reload(0))
-            actual.push(nerf.reload(-1))
-            actual.push(nerf.reload('5'))
+            bulb.toggle()
+            actual.push(bulb.isOn)
+            bulb.toggle()
+            actual.push(bulb.isOn)
+            bulb.toggle()
+            actual.push(bulb.isOn)
+          } catch (err) { actual = err.message }
+          return [description, expected, actual]
+        },
+        function () {
+          let actual, description = 'Toggling returns the proper messages'
+          let expected = ["You turned the bulb ON", "You turned the bulb OFF", "You turned the bulb ON"]
+          try {
+            let bulb = new Bulb()
+            actual = []
+            actual.push(bulb.toggle())
+            actual.push(bulb.toggle())
+            actual.push(bulb.toggle())
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
       ])
-      testClass('CHALLENGE 3 - class EBook', [
+      runTest('CHALLENGE 4 - CountDown', [
         function () {
-          let actual, description = 'Ebook can turn pages'
-          let expected = ['abc', 'def', 'g']
+          let actual, description = 'Calling count returns the proper number'
+          let expected = ["4!", "3!", "2!", "1!"]
           try {
-            const book = new EBook('abcdefg', 3)
+            let minusFour = new CountDown(4)
             actual = []
-            actual.push(book.next()); actual.push(book.next()); actual.push(book.next())
+            actual.push(minusFour.count())
+            actual.push(minusFour.count())
+            actual.push(minusFour.count())
+            actual.push(minusFour.count())
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
         function () {
-          let actual, description = 'Turning page yields null when there is no more text'
-          let expected = ['abcd', 'efgh', 'ij', null, null]
+          let actual, description = 'Upon reaching zero, count returns Liftoff!'
+          let expected = ["3!", "2!", "1!", "Liftoff!"]
           try {
-            const book = new EBook('abcdefghij', 4)
+            let minusThree = new CountDown(3)
             actual = []
-            actual.push(book.next()); actual.push(book.next()); actual.push(book.next())
-            actual.push(book.next()); actual.push(book.next())
+            actual.push(minusThree.count())
+            actual.push(minusThree.count())
+            actual.push(minusThree.count())
+            actual.push(minusThree.count())
+          } catch (err) { actual = err.message }
+          return [description, expected, actual]
+        },
+        function () {
+          let actual, description = 'After liftoff, count always returns null'
+          let expected = ["2!", "1!", "Liftoff!", null, null]
+          try {
+            let minusTwo = new CountDown(2)
+            actual = []
+            actual.push(minusTwo.count())
+            actual.push(minusTwo.count())
+            actual.push(minusTwo.count())
+            actual.push(minusTwo.count())
+            actual.push(minusTwo.count())
           } catch (err) { actual = err.message }
           return [description, expected, actual]
         },
       ])
-      testClass('CHALLENGE 4 - class AntFarm', [
-        function () {
-          let actual, description = 'AntFarm initializes the ants correctly'
-          let expected = [
-            { name: 'Jess', health: 100 }, { name: 'Blake', health: 100 }, { name: 'Jess', health: 100 }
-          ]
-          try {
-            const farm = new AntFarm('Jess', 'Blake', 'Jess')
-            actual = farm.ants
-          } catch (err) { actual = err.message }
-          return [description, expected, actual]
-        },
-        function () {
-          let actual, description = 'Working substracts 20 health points'
-          let expected = [
-            { name: 'Jess', health: 80 }, { name: 'Blake', health: 80 }, { name: 'Jess', health: 80 }
-          ]
-          try {
-            const farm = new AntFarm('Jess', 'Blake', 'Jess')
-            farm.work()
-            actual = farm.ants
-          } catch (err) { actual = err.message }
-          return [description, expected, actual]
-        },
-        function () {
-          let actual, description = 'Overworking kills the ants'
-          let expected = []
-          try {
-            const farm = new AntFarm('Jess', 'Blake', 'Jess')
-            farm.work(); farm.work(); farm.work(); farm.work(); farm.work()
-            actual = farm.ants
-          } catch (err) { actual = err.message }
-          return [description, expected, actual]
-        },
-        function () {
-          let actual, description = 'Working returns the correct string'
-          let expected = ["3 ants starting work!", "1 ants starting work!", "No ants here. Did you work them to death?"]
-          try {
-            const farm = new AntFarm('Jess', 'Blake', 'Jess')
-            farm.ants[0].health++
-            actual = []
-            farm.work(); farm.work(); farm.work(); farm.work()
-            actual.push(farm.work()); actual.push(farm.work()); actual.push(farm.work())
-          } catch (err) { actual = err.message }
-          return [description, expected, actual]
-        },
-        function () {
-          let actual, description = 'Feeding increases 15 health points of lucky ant(s)'
-          let expected = [{ name: "Jess", "health": 115 }, { name: "Blake", health: 100 }, { name: "Jess", health: 115 }]
-          try {
-            const farm = new AntFarm('Jess', 'Blake', 'Jess')
-            farm.feed('Jess')
-            actual = farm.ants
-          } catch (err) { actual = err.message }
-          return [description, expected, actual]
-        },
-        function () {
-          let actual, description = 'Feeding returns the correct string'
-          let expected = ["Yum!", "bad name not found!", "another bad name not found!"]
-          try {
-            const farm = new AntFarm('Jess', 'Blake', 'Jess')
-            actual = []
-            actual.push(farm.feed('Blake'))
-            actual.push(farm.feed('bad name'))
-            actual.push(farm.feed('another bad name'))
-          } catch (err) { actual = err.message }
-          return [description, expected, actual]
-        },
-      ])
-      function testClass(testTitle, tests) {
+      function runTest(testTitle, tests) {
         console.log(testTitle)
         tests.forEach((test, idx) => {
-          const [, expected, actual] = test()
-          const [desJSON, expJSON, actJSON] = test().map(JSON.stringify)
-          if (_.isEqual(expected, actual)) {
-            console.log(`\t✅ Test ${idx + 1} ${desJSON} PASSED`)
+          const [description, expected, actual] = test().map(JSON.stringify)
+          if (expected === actual) {
+            console.log(`\t✅ Test ${idx + 1} ${description} PASSED`)
           } else {
-            console.log(`\t❌ Test ${idx + 1} ${desJSON} FAILED:
-              Expected ${expJSON}
-              Actual   ${actJSON}`)
+            console.log(`\t❌ Test ${idx + 1} ${description} FAILED:
+          💀 Expected ${expected} but got ${actual}`)
           }
         })
       }
-      let getTextArea = () => document.querySelector('.widget textarea')
-      let getNumberInput = () => document.querySelector('.widget input[type=number]')
-      const getText = () => getTextArea().value
-      const getChars = () => Number(getNumberInput().value)
-      turnPage.disabled = true
-      let book
-      let updateBook = () => {
-        turnPage.disabled = (getText() && getChars() && getChars() > 0) ? false : true
-        book = new EBook(getText(), getChars())
-      }
-      getTextArea().oninput = updateBook
-      getNumberInput().oninput = updateBook
-      turnPage.onclick = () => {
-        bookPage.textContent = book.next() || 'The End'
-      }
-    } catch (err) { console.error(err.stack) }
+    }
   </script>
 </body>
 
